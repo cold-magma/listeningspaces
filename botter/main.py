@@ -36,7 +36,7 @@ def connect_spotify():
     payload = {
         "code": authID,
         "grant_type": "authorization_code",
-        "redirect_uri": "http://localhost:5000/auth/",
+        "redirect_uri": "https://listenbotter.herokuapp.com/auth/",
         "scope": scope
     }
     headers = {
