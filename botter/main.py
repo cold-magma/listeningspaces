@@ -47,6 +47,7 @@ def connect_spotify():
     refresh_token = response.json()["refresh_token"]
     token_duration = response.json()["expires_in"]
 
+
     current_user.access_token = authID
     current_user.refresh_token = refresh_token
     current_user.token_time = token_duration
