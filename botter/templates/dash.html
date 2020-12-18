@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Botter</title>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='dash.css') }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<div id="logo">
+			<h1 id="logoh1">Botter</h1>
+			<p>Listen to your favorite songs with friends</p>
+		</div>
+		<div class="options">
+			
+			{% if is_connected %}
+			<a class="links" href="">Spotify connected ✓</a>
+			{% else %}
+			<a class="links" href='https://accounts.spotify.com/authorize?client_id={{ client_id }}&scope={{ scope }}&response_type=code&redirect_uri=http://localhost:5000/auth/'>Connect Spotify</a>
+			{% endif %}
+			<a class="links" href="{{ url_for('auth.logout') }}">Logout</a>
+		</div>
+	</nav>
+	<div id="content">
+		<div id="head"><h1>Welcome {{ name }}!</h1></div>
+		<div id='room_controls'>
+			<a class="links" href="{{ url_for('main.create_room') }}">Create Room</a>
+			<a class="links" href="{{ url_for('main.join_room_func') }}">Join a Room</a>
+		</div>
+	</div>
+	{% if not is_connected %}
+	<div class="popup">
+		<div id="popcontent">
+			Connect to your spotify account to use the service.
+			<br>
+			This service requires access to your spotify account to play music.
+		</div>
+		<a class="links" id="connect_link" href='https://accounts.spotify.com/authorize?client_id={{ client_id }}&scope={{ scope }}&response_type=code&redirect_uri=http://localhost:5000/auth/'>Connect Spotify</a>
+	</div>
+	{% endif %}
+</body>
+</html>

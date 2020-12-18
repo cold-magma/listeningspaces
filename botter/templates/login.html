@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Botter</title>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='authpages.css') }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<div id="logo">
+			<h1 id="logoh1">Botter</h1>
+			<p>Listen to your favorite songs with friends</p>
+		</div>
+		<div class="auth">
+			<p>Not a user yet?</p>
+			<a class="links" href="{{ url_for('auth.signup') }}">Sign up</a>
+		</div>
+	</nav>
+	<div id="content">
+		<form method="POST" action="#">
+			<input class="data" type="email" name="username" placeholder="Email">
+			<input class="data" type="password" name="password" placeholder="Password">
+			<div>
+				<input type="checkbox" id="remember" name="remember" value="True">
+				<label for="remember">Remember me</label><br>
+			</div>
+			{% if error %}
+				<p>{{ error }}</p>
+			{% endif %}
+			<input class="submit" type="submit" name="submit" value="Login">
+		</form>
+	</div>
+</body>
+</html>

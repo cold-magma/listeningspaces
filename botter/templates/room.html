@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Botter</title>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='rooms.css') }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var socket = io();
+
+			socket.on('connect', function () {
+				socket.emit("join_room",{'name':'{{ name }}','room':'{{ room }}','type':'system'});
+			});
+
+			socket.on('song_to_q', function (data) {
+				socket.send(data);
+			});
+
+			// chat
+			$('#send_btn').on('click', function () {
+				var msg = $('#sender_msg').val();
+				document.getElementById('sender_msg').value = '';
+				if (msg.trim()=="") return;
+				socket.send({'msg':msg.trim(),'name':"{{ name }}",'room':'{{ room }}','type':'chat'});
+			});
+
+			// search
+			$('#search_btn').on('click', function () {
+				var query = $('#search_text').val();
+				document.getElementById('results_div').innerHTML = '';
+				if (query.trim()=="") return;
+				socket.emit("search",{'query':query.trim(),'name':"{{ name }}",'room':'{{ room }}','type':'search'});
+			});
+
+			// add song
+			$(document).on('click', 'div.track', function() {
+			    var uri = $(this).children('span.uri').text();
+			    var title = $(this).children('div.art_title').children('h2').text() + "-" + $(this).children('div.art_title').children('h3').text();
+				socket.emit("add_song",{'track_name':title,'uri':uri,'name':'{{ name }}','room':'{{ room }}','type':'add_song'});
+			});
+
+			// play song
+			$("#play").on('click',function(){
+				socket.emit('play',{'name':"{{ name }}",'room':'{{ room }}','type':'play'})
+			});
+
+			// pause
+			$("#pause").on('click',function(){
+				socket.emit('pause',{'name':"{{ name }}",'room':'{{ room }}','type':'pause'})
+			});
+
+			// leave room
+			$("#leave_room").on('click',function(){
+				socket.emit('leave_room',{'name':"{{ name }}",'room':'{{ room }}','type':'system'})
+			});
+
+			// message
+			socket.on('message', function (data) {
+				if (data['type']=='track_info'){
+					document.getElementById('now_playing').innerHTML = '';
+					var htmlstr = "<h2>NOW PLAYING</h2><img class='tin_album_art' src='"+ data['track_info']['img'] + "'><div class='tin_art_title'><h2 class='title'>"+ data['track_info']['title'] +"</h2><h3 class='art'>" +data['track_info']['artist'] +"</h3></div>";
+					$('#now_playing').append(htmlstr);
+				}
+				else if (data['type']=='system'){
+					$('#message').append("<div class='msg_div'><li class='system_msg'>" + data.msg +"</li></div>");
+				}
+				else if (data['type']=='search'){
+
+					for(var i=0;i<5;i++){
+						var htmlstr = "<div id='track"+ i.toString() + "' class='track'><img class='album_art' src='"+ data['links'][i.toString()] + "'><div class='art_title'><h2 class='title'>"+ data['titles'][i.toString()] +"</h2><h3 class='art'>" +data['artists'][i.toString()] +"</h3></div><span class='uri'>" + data['uris'][i.toString()] + "</span></div>";
+						$('#results_div').append(htmlstr);
+					}
+					
+				}
+				else if (data['name']=='{{ name }}') {
+					$('#message').append("<div class='msg_div'><li class='my_name'>" + data.name +"</li>" +"<li class='my_msg'>" + data.msg + "</li></div>");
+				}
+				else{
+					$('#message').append("<div class='msg_div'><li class='a_name'>" + data.name +"</li>" +"<li class='a_msg'>" + data.msg + "</li></div>");
+				}
+			});
+		});
+	</script>
+	<nav>
+		<div id="logo">
+			<h1 id="logoh1">Botter</h1>
+			<p>Listen to your favorite songs with friends</p>
+		</div>
+		<div class="auth">
+			<a class="links" href="{{ url_for('main.create_room') }}">Create new room</a>
+			<a class="links" href="{{ url_for('main.join_room_func') }}">Join a room</a>
+			<a class="links" href="{{ url_for('main.dashboard') }}">Home</a>
+		</div>
+	</nav>
+	<div id="room_key_div">Room key: <h2>{{ room }}</h2></div>
+	<div id="content">
+		<div id="songs">
+			{% if  owner %}
+			<div id="search">
+				<div id="search_div">
+						<input type="text" class="key_in" name="search" id="search_text" placeholder="Search for a song...">
+						<button id="search_btn" class="enter">Search</button>
+				</div>
+				<div id="results_div">
+
+				</div>
+			</div>
+			{% else %}
+			<div id="now_playing">
+				
+			</div>
+			{% endif %}
+		</div>
+
+		<div id="chat">
+			<div id="messages">
+				<ul id="message">
+					
+				</ul>				
+			</div>
+			<div id="sender">
+				<input type="text" name="type_message" id="sender_msg" placeholder="Type something here...">
+				<input type="submit" name="send" id="send_btn" value="SEND">
+			</div>
+		</div>
+		
+		<div id="play_pause">
+			{% if owner %}
+			<button class="enter" id="play">▶</button>
+			<button class="enter" id="pause">⏸</button>
+			{% endif %}
+			<button class="enter" id="leave_room"><a href="{{ url_for('main.dashboard') }}">Leave room  ✖</a></button>
+		</div>
+
+	</div>
+	
+</body>
+</html>
+
+<!-- 
+$('.track').on('click', function(){
+				var uri = $(this).children(span).val();
+				var title = $(this).children(span).val() + "-" + $(this).children(span).val();
+				socket.emit("add_song",{'track_name':title,'uri':uri,'name':'{{ name }}','room':'{{ room }}','type':'add_song'});
+			});
+-->
