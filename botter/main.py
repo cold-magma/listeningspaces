@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, redirect, Blueprint, session
-import os, string, sys, urllib, base64, requests, six
+import os,random,string, sys, urllib, base64, requests, six
 from .run import run,add_track,play_track,pause_track,is_playing_track,get_now_playing
 from . import db,socketio,join_room,leave_room
 from datetime import datetime,date
@@ -46,7 +46,6 @@ def connect_spotify():
     authID = response.json()["access_token"]
     refresh_token = response.json()["refresh_token"]
     token_duration = response.json()["expires_in"]
-
 
     current_user.access_token = authID
     current_user.refresh_token = refresh_token
