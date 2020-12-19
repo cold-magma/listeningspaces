@@ -147,3 +147,7 @@ form{
 	align-items: center;
 	justify-content: space-around;
 }
+.error{
+	font-family: 'Roboto Condensed', monospace;
+	font-size: 14px;
+}

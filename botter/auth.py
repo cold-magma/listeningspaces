@@ -15,7 +15,7 @@ def login():
         user = User.query.filter_by(email_id=username).first()
 
         if not user or not check_password_hash(user.password,password):
-            return render_template('login.html', error="Incoorect E-mail or password.")
+            return render_template('login.html', error="Incorrect E-mail or password.")
         else:
             login_user(user,remember=remember)
             return redirect(url_for('main.dashboard'))

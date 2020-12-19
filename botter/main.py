@@ -23,6 +23,21 @@ def dashboard():
     return render_template("dash.html", is_connected = True, name = current_user.name, client_id=client_id,scope=scope)
 
 
+@main.route("/profile", methods=['GET','POST'])
+@login_required
+def profile():
+    if request.form['POST']:
+        if request.form['old_pass']==current_user.password:
+            if request.form['new_pass']==request.form['r_new_pass']:
+                current_user.password = request.form['new_pass']
+            else:
+                return render_template('profile.html',error="Passwords do not match.", name=current_user.name, email = current_user.email_id)
+        else:
+            return render_template('profile.html', error="The current password you entered is incorrect.",name=current_user.name, email = current_user.email_id)
+    else:
+        return render_template('profile.html', name=current_user.name, email = current_user.email_id)
+
+
 @main.route("/")
 def home():
     return render_template('home.html')

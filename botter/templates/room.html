@@ -80,11 +80,14 @@
 					}
 					
 				}
-				else if (data['name']=='{{ name }}') {
+				else if (data['name']=='{{ name }}' && data['type']=='chat') {
 					$('#message').append("<div class='msg_div'><li class='my_name'>" + data.name +"</li>" +"<li class='my_msg'>" + data.msg + "</li></div>");
 				}
-				else{
+				else if(data['type']=='chat'){
 					$('#message').append("<div class='msg_div'><li class='a_name'>" + data.name +"</li>" +"<li class='a_msg'>" + data.msg + "</li></div>");
+				}
+				else{
+					return 
 				}
 			});
 		});
@@ -144,11 +147,3 @@
 	
 </body>
 </html>
-
-<!-- 
-$('.track').on('click', function(){
-				var uri = $(this).children(span).val();
-				var title = $(this).children(span).val() + "-" + $(this).children(span).val();
-				socket.emit("add_song",{'track_name':title,'uri':uri,'name':'{{ name }}','room':'{{ room }}','type':'add_song'});
-			});
--->
