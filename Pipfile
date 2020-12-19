@@ -12,6 +12,7 @@ gunicorn = "*"
 six = "*"
 psycopg2 = "*"
 requests = "*"
+eventlet = "*"
 
 [dev-packages]
 
