@@ -14,7 +14,7 @@
 <body>
 	<script type="text/javascript">
 		$(document).ready(function () {
-			var socket = io('https://listenbotter.herokuapp.com/room');
+			var socket = io();
 
 			socket.on('connect', function () {
 				socket.emit("join_room",{'name':'{{ name }}','room':'{{ room }}','type':'system'});
