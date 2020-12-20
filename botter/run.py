@@ -18,7 +18,6 @@ def add_track(auth,uri):
         return True
     else:
         added = spotify_client.add_track_to_queue(uri)
-        spotify_client.skip_track()
         return added
 
 def play_track(auth):
