@@ -44,7 +44,7 @@ class SpotifyClient():
             "Content-Type": "application/json",
             "Authorization": "Bearer {}".format(self.auth_token)
         })
-        if not response.ok:
+        if str(response.status_code) == "204":
             return "no_track_queued"
         print(response)
         response_json = response.json()
