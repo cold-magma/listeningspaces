@@ -128,6 +128,8 @@ def message(data):
         if not is_in_time():
             re_auth()
         if add_track(current_user.access_token,uri):
+            if data['name']!=current_user.name:
+                return
             socketio.send({'msg':data['track_name'] + " has been added to queue",'name':data['name'],'room':data['room'],'type':'system'},room=data['room'])
         else:
             socketio.send(
