@@ -44,11 +44,9 @@ class SpotifyClient():
             "Content-Type": "application/json",
             "Authorization": "Bearer {}".format(self.auth_token)
         })
-
-        response_json = response.json()
-        if not response_json:
+        if not response:
             return "no_track_queued"
-
+        response_json = response.json()
         if response_json['is_playing']=="true":
             return "track_playing"
         return "no_track_playing"
