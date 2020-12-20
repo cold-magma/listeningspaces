@@ -46,10 +46,12 @@ class SpotifyClient():
         })
 
         response_json = response.json()
+        if not response_json:
+            return "no_track_queued"
 
         if response_json['is_playing']=="true":
-            return True
-        return False
+            return "track_playing"
+        return "no_track_playing"
 
             
     def skip_track(self,uri):
@@ -59,6 +61,15 @@ class SpotifyClient():
             "Authorization": "Bearer {}".format(self.auth_token)
         })
         return True
+
+    def play_track(self,uri):
+        p_url = "https://api.spotify.com/v1/me/player/play"
+        data = {"uris": [uri]}
+        requests.put(p_url, headers={
+            "Content-Type": "application/json",
+            "Authorization": "Bearer {}".format(self.auth_token)
+        })
+
 
     def play(self):
         p_url = "https://api.spotify.com/v1/me/player/play"

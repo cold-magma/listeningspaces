@@ -13,17 +13,22 @@ def run(auth, query):
 
 def add_track(auth,uri):
     spotify_client = SpotifyClient(auth)
-    added = spotify_client.add_track_to_queue(uri)
-    return added
+    if spotify_client.is_playing() == "no_track_queued":
+        spotify_client.play_track(uri)
+        return True
+    else
+        added = spotify_client.add_track_to_queue(uri)
+        spotify_client.skip_track()
+        return added
 
 def play_track(auth):
     spotify_client = SpotifyClient(auth)
-    if not spotify_client.is_playing():
+    if spotify_client.is_playing() == "no_track_playing":
         spotify_client.play()
 
 def pause_track(auth):
     spotify_client = SpotifyClient(auth)
-    if not spotify_client.is_playing():
+    if spotify_client.is_playing() == "track_playing":
         spotify_client.pause()
 
 def is_playing_track(auth):
