@@ -46,6 +46,7 @@ class SpotifyClient():
         })
         if not response:
             return "no_track_queued"
+        print(response)
         response_json = response.json()
         if response_json['is_playing']=="true":
             return "track_playing"
