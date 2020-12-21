@@ -139,9 +139,9 @@
 		
 		<div id="play_pause">
 			{% if owner %}
-			<button class="enter" id="play"><img class="icons" src="{{ url_for('static/images',filename='play.png') }}"></button>
-			<button class="enter" id="pause"><img class="icons" src="{{ url_for('static/images',filename='pause.png') }}"></button>
-			<button class="enter" id="sync"><img class="icons" src="{{ url_for('static/images',filename='sync.png') }}"></button>
+			<button class="enter" id="play"><img class="icons" src="{{ url_for('static',filename='play.png') }}"></button>
+			<button class="enter" id="pause"><img class="icons" src="{{ url_for('static',filename='pause.png') }}"></button>
+			<button class="enter" id="sync"><img class="icons" src="{{ url_for('static',filename='sync.png') }}"></button>
 			{% endif %}
 			<button class="enter" id="leave_room"><a href="{{ url_for('main.dashboard') }}">Leave room  ✖</a></button>
 		</div>
