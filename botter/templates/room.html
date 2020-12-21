@@ -68,6 +68,7 @@
 					document.getElementById('now_playing').innerHTML = '';
 					var htmlstr = "<h2>NOW PLAYING</h2><img class='tin_album_art' src='"+ data['track_info']['img'] + "'><div class='tin_art_title'><h2 class='title'>"+ data['track_info']['title'] +"</h2><h3 class='art'>" +data['track_info']['artist'] +"</h3></div>";
 					$('#now_playing').append(htmlstr);
+					
 				}
 				else if (data['type']=='system'){
 					$('#message').append("<div class='msg_div'><li class='system_msg'>" + data.msg +"</li></div>");
@@ -87,8 +88,9 @@
 					$('#message').append("<div class='msg_div'><li class='a_name'>" + data.name +"</li>" +"<li class='a_msg'>" + data.msg + "</li></div>");
 				}
 				else{
-					return 
+					 
 				}
+				$('#message').scrollTop = $('#message').scrollHeight;
 			});
 		});
 	</script>
@@ -137,8 +139,9 @@
 		
 		<div id="play_pause">
 			{% if owner %}
-			<button class="enter" id="play">▶</button>
-			<button class="enter" id="pause">⏸</button>
+			<button class="enter" id="play"><img class="icons" src="{{ url_for('static/images',filename='play.png') }}"></button>
+			<button class="enter" id="pause"><img class="icons" src="{{ url_for('static/images',filename='pause.png') }}"></button>
+			<button class="enter" id="sync"><img class="icons" src="{{ url_for('static/images',filename='sync.png') }}"></button>
 			{% endif %}
 			<button class="enter" id="leave_room"><a href="{{ url_for('main.dashboard') }}">Leave room  ✖</a></button>
 		</div>

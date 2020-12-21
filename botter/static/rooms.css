@@ -363,6 +363,10 @@ h3{
 	height: 100%;
 	width: 5%;
 }
+#sync{
+	height: 100%;
+	width: 5%;
+}
 #leave_room{
 	width: 10%;
 	background: #e53912;
@@ -379,4 +383,7 @@ h3{
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
+}
+.icons{
+	width: 10%;
 }
