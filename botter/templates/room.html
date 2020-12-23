@@ -84,6 +84,7 @@
 				}
 				else if (data['type']=='system'){
 					$('#message').append("<div class='msg_div'><li class='system_msg'>" + data.msg +"</li></div>");
+					$('#message').scrollTop($('#message').height())
 				}
 				else if (data['type']=='search'){
 
@@ -95,14 +96,16 @@
 				}
 				else if (data['name']=='{{ name }}' && data['type']=='chat') {
 					$('#message').append("<div class='msg_div'><li class='my_name'>" + data.name +"</li>" +"<li class='my_msg'>" + data.msg + "</li></div>");
+					$('#message').scrollTop($('#message').height())
 				}
 				else if(data['type']=='chat'){
 					$('#message').append("<div class='msg_div'><li class='a_name'>" + data.name +"</li>" +"<li class='a_msg'>" + data.msg + "</li></div>");
+					$('#message').scrollTop($('#message').height())
 				}
 				else{
 					 
 				}
-				$('#message').scrollTop($('#message').height())
+				
 			});
 		});
 	</script>
