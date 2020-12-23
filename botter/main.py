@@ -136,8 +136,9 @@ def message(data):
                 {'msg': "Error adding track", 'name': data['name'], 'room': data['room'],
                  'type': 'system'}, room=data['room'])
     elif data['type']=='sync':
-        uri=data['uri']
-        pos = data['pos']
+        s_info = data['sync_info']
+        uri=s_info['uri']
+        pos = s_info['pos']
         if not is_in_time():
             re_auth()
         if sync_user_playback(current_user.access_token,data['sync_info']):

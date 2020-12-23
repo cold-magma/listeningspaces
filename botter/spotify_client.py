@@ -93,7 +93,7 @@ class SpotifyClient():
             "Content-Type": "application/json",
             "Authorization": "Bearer {}".format(self.auth_token)
         })
-
+        
         response_json = response.json()
 
         try:
