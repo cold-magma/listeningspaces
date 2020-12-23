@@ -14,6 +14,12 @@
 <body>
 	<script type="text/javascript">
 		$(document).ready(function () {
+
+			window.setInterval(function() {
+			  var elem = document.getElementById('message');
+			  elem.scrollTop = elem.scrollHeight;
+			}, 5000);
+
 			var socket = io();
 
 			socket.on('connect', function () {
