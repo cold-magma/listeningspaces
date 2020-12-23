@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect, Blueprint, session
 import os,random,string, sys, urllib, base64, requests, six
-from .run import run,add_track,play_track,pause_track,is_playing_track,get_now_playing
+from .run import run,add_track,play_track,pause_track,is_playing_track,get_now_playing,sync_user_playback
 from . import db,socketio,join_room,leave_room
 from datetime import datetime,date
 from .models import User,Room
@@ -135,7 +135,25 @@ def message(data):
             socketio.send(
                 {'msg': "Error adding track", 'name': data['name'], 'room': data['room'],
                  'type': 'system'}, room=data['room'])
-    socketio.send(data,room=data['room'])
+    else if data['type']=='sync':
+        uri=data['uri']
+        pos = data['pos']
+        if not is_in_time():
+            re_auth()
+        if sync_user_playback(current_user.access_token,data['sync_info']):
+            socketio.send(
+                {'msg': "Synced users", 'name': data['name'], 'room': data['room'],
+                 'type': 'system'}, room=data['room'])
+            socketio.send({'track_info': data['sync_info'], 'name': data['name'], 'room': data['room'], 'type': 'track_info'},
+                          room=data['room'])
+        
+        else:
+            socketio.send(
+                {'msg': "Error syncing", 'name': data['name'], 'room': data['room'],
+                 'type': 'system'}, room=data['room'])
+
+    else:
+        socketio.send(data,room=data['room'])
 
 
 @socketio.on('join_room')
@@ -161,21 +179,25 @@ def sockpause(data):
     pause_track(current_user.access_token)
 
 
+@socketio.on('sync')
+def socksync(data):
+    if not is_in_time():
+        re_auth()
+    q = get_now_playing(current_user.access_token)
+    if q:
+        socketio.emit("sync_users",{'sync_info':q,'name':data['name'],'room':data['room'],'type':'sync'},room=data['room'])
+
+
 @socketio.on('leave_room')
 def leave(data):
     leave_room(data['room'])
     socketio.send({'msg': current_user.name +' has left the room','type':'system'},room=data['room'])
     return redirect(url_for('main.dashboard'))
 
+
 @socketio.on('add_song')
 def add_song(data):
     socketio.emit("song_to_q", data, room=data['room'])
-    #uri = data['uri']
-    #if not is_in_time():
-    #    re_auth()
-    #if add_track(current_user.access_token,uri):
-    #    socketio.send({'msg':data['track_name'] + " has been added to queue",'name':data['name'],'room':data['room'],'type':'system'},room=data['room'])
-
 
 
 @socketio.on('search')

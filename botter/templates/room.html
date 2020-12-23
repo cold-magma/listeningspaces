@@ -24,6 +24,10 @@
 				socket.send(data);
 			});
 
+			socket.on('sync_users', function (data) {
+				socket.send(data);
+			});
+
 			// chat
 			$('#send_btn').on('click', function () {
 				var msg = $('#sender_msg').val();
@@ -47,6 +51,11 @@
 				socket.emit("add_song",{'track_name':title,'uri':uri,'name':'{{ name }}','room':'{{ room }}','type':'add_song'});
 			});
 
+			// sync
+			$("#sync").on('click',function(){
+				socket.emit('sync',{'name':"{{ name }}",'room':'{{ room }}','type':'sync'})
+			});
+
 			// play song
 			$("#play").on('click',function(){
 				socket.emit('play',{'name':"{{ name }}",'room':'{{ room }}','type':'play'})
@@ -64,7 +73,10 @@
 
 			// message
 			socket.on('message', function (data) {
-				if (data['type']=='track_info'){
+				if (data['type']=='sync_info'){
+					socket.send(data,room=data['room'])					
+				}
+				else if (data['type']=='track_info'){
 					document.getElementById('now_playing').innerHTML = '';
 					var htmlstr = "<h2>NOW PLAYING</h2><img class='tin_album_art' src='"+ data['track_info']['img'] + "'><div class='tin_art_title'><h2 class='title'>"+ data['track_info']['title'] +"</h2><h3 class='art'>" +data['track_info']['artist'] +"</h3></div>";
 					$('#now_playing').append(htmlstr);

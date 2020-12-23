@@ -100,9 +100,30 @@ class SpotifyClient():
             q['title'] = response_json['item']['name']
             q['artist'] = response_json['item']['artists'][0]['name']
             q['img'] = response_json['item']['album']['images'][0]['url']
+            q['uri'] = response_json['item']['uri']
+            q['pos'] = respomse_json['progress_ms']
             return q
         except KeyError:
             return False
+
+
+    def sync(self,data):
+        url = "https://api.spotify.com/v1/me/play"
+
+        payload = {
+            'uris':[data['uri']],
+            'position_ms':data['pos']
+        }
+
+        response = requests.put(url,data=payload, headers={
+            "Content-Type": "application/json",
+            "Authorization": "Bearer {}".format(self.auth_token)
+        })
+
+        return response.ok
+
+
+
         
         
 
