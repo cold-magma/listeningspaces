@@ -135,7 +135,7 @@ def message(data):
             socketio.send(
                 {'msg': "Error adding track", 'name': data['name'], 'room': data['room'],
                  'type': 'system'}, room=data['room'])
-    else if data['type']=='sync':
+    elif data['type']=='sync':
         uri=data['uri']
         pos = data['pos']
         if not is_in_time():
@@ -146,7 +146,7 @@ def message(data):
                  'type': 'system'}, room=data['room'])
             socketio.send({'track_info': data['sync_info'], 'name': data['name'], 'room': data['room'], 'type': 'track_info'},
                           room=data['room'])
-        
+
         else:
             socketio.send(
                 {'msg': "Error syncing", 'name': data['name'], 'room': data['room'],
