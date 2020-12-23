@@ -141,7 +141,7 @@ def message(data):
         pos = s_info['pos']
         if not is_in_time():
             re_auth()
-        if sync_user_playback(current_user.access_token,data['sync_info']):
+        if sync_user_playback(current_user.access_token,uri):
             socketio.send(
                 {'msg': "Synced users", 'name': data['name'], 'room': data['room'],
                  'type': 'system'}, room=data['room'])
