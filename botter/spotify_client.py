@@ -101,7 +101,7 @@ class SpotifyClient():
             q['artist'] = response_json['item']['artists'][0]['name']
             q['img'] = response_json['item']['album']['images'][0]['url']
             q['uri'] = response_json['item']['uri']
-            q['pos'] = respomse_json['progress_ms']
+            q['pos'] = response_json['progress_ms']
             return q
         except KeyError:
             return False
