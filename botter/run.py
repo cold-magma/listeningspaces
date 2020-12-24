@@ -22,13 +22,11 @@ def add_track(auth,uri):
 
 def play_track(auth):
     spotify_client = SpotifyClient(auth)
-    if spotify_client.is_playing() == "no_track_playing":
-        spotify_client.play()
+    spotify_client.play()
 
 def pause_track(auth):
     spotify_client = SpotifyClient(auth)
-    if spotify_client.is_playing() == "track_playing":
-        spotify_client.pause()
+    spotify_client.pause()
 
 def is_playing_track(auth):
     spotify_client = SpotifyClient(auth)
