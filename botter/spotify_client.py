@@ -120,6 +120,7 @@ class SpotifyClient():
             "Authorization": "Bearer {}".format(self.auth_token)
         })
 
+        print(response.message)
 
 
         
