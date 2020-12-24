@@ -139,6 +139,7 @@ def message(data):
         s_info = data['sync_info']
         uri=s_info['uri']
         pos = s_info['pos']
+        print(uri)
         if not is_in_time():
             re_auth()
         if sync_user_playback(current_user.access_token,uri,pos):

@@ -112,7 +112,7 @@ class SpotifyClient():
 
         payload = {
             'uris':[uri],
-            'position_ms':pos
+            'position_ms':0
         }
 
         response = requests.put(url,data=payload, headers={
