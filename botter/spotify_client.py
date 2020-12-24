@@ -115,7 +115,10 @@ class SpotifyClient():
             "position_ms": 0
         }
 
-        response = requests.put(url,data=payload, headers={
+        response = requests.put(url,data={
+            "uris": ["{}".format(uri)],
+            "position_ms": 0
+        }, headers={
             "Content-Type": "application/json",
             "Authorization": "Bearer {}".format(self.auth_token)
         })
