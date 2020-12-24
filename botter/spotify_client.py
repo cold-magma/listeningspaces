@@ -107,8 +107,8 @@ class SpotifyClient():
             return False
 
 
-    def sync(self,uri,pos):
-        url = "https://api.spotify.com/v1/me/play"
+    def sync(self,uri):
+        url = "https://api.spotify.com/v1/me/player/play"
 
         payload = {
             'uris':[uri],
