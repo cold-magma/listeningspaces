@@ -111,7 +111,7 @@ class SpotifyClient():
         url = "https://api.spotify.com/v1/me/player/play"
 
         payload = {
-            'uris':[uri],
+            'uris':["{}".format(uri)],
             'position_ms':0
         }
 
@@ -119,8 +119,6 @@ class SpotifyClient():
             "Content-Type": "application/json",
             "Authorization": "Bearer {}".format(self.auth_token)
         })
-
-        return response.ok
 
 
 

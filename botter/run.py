@@ -37,7 +37,7 @@ def get_now_playing(auth):
     return spotify_client.now_playing()
 
 
-def sync_user_playback(auth,uri,pos):
+def sync_user_playback(auth,uri):
     spotify_client = SpotifyClient(auth)
     spotify_client.sync(uri)
 
