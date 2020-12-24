@@ -107,12 +107,12 @@ class SpotifyClient():
             return False
 
 
-    def sync(self,data):
+    def sync(self,uri,pos):
         url = "https://api.spotify.com/v1/me/play"
 
         payload = {
-            'uris':[data['uri']],
-            'position_ms':data['pos']
+            'uris':[uri],
+            'position_ms':pos
         }
 
         response = requests.put(url,data=payload, headers={
