@@ -110,15 +110,7 @@ class SpotifyClient():
     def sync(self,uri):
         url = "https://api.spotify.com/v1/me/player/play"
 
-        payload = {
-            "uris": ["{}".format(uri)],
-            "position_ms": 0
-        }
-
-        response = requests.put(url,data={
-            "uris": ["{}".format(uri)],
-            "position_ms": 0
-        }, headers={
+        response = requests.put(url,data={"uris": ["{}".format(uri)]}, headers={
             "Content-Type": "application/json",
             "Authorization": "Bearer {}".format(self.auth_token)
         })
