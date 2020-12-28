@@ -34,8 +34,8 @@ def user_profile():
                 return render_template('profile.html',error="Passwords do not match.", name=current_user.name, email = current_user.email_id)
         else:
             return render_template('profile.html', error="The current password you entered is incorrect.",name=current_user.name, email = current_user.email_id)
-    else:
-        return render_template('profile.html', name=current_user.name, email = current_user.email_id)
+
+    return render_template('profile.html', name=current_user.name, email = current_user.email_id)
 
 
 @main.route("/")
