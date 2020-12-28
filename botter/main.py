@@ -25,7 +25,7 @@ def dashboard():
 
 @main.route("/profile", methods=['GET','POST'])
 @login_required
-def profile():
+def user_profile():
     if request.form['POST']:
         if request.form['old_pass']==current_user.password:
             if request.form['new_pass']==request.form['r_new_pass']:
