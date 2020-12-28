@@ -29,12 +29,12 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#change").on('click', function(){
-				$('.popup').append('')
+				$('.popup').append('<form action="" method="POST"><input type="password" name="old_pass"><input type="password" name="new_pass"><input type="password" name="r_new_pass"><input type="submit" name="submit" value="Change Password"></form>')
 			});
 		});
 	</script>
 	<div class="popup">
-		<form action="" method="POST"><input type="password" name="old_pass"><input type="password" name="new_pass"><input type="password" name="r_new_pass"><input type="submit" name="submit" value="Change Password"></form>
+		
 		{% if error %}
 		<p>{{ error }}</p>
 		{% endif %}

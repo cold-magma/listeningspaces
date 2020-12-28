@@ -26,7 +26,7 @@ def dashboard():
 @main.route("/profile", methods=['GET','POST'])
 @login_required
 def user_profile():
-    if request.form['POST']:
+    if request.method == 'POST':
         if request.form['old_pass']==current_user.password:
             if request.form['new_pass']==request.form['r_new_pass']:
                 current_user.password = request.form['new_pass']
@@ -35,7 +35,7 @@ def user_profile():
         else:
             return render_template('profile.html', error="The current password you entered is incorrect.",name=current_user.name, email = current_user.email_id)
 
-    return render_template('profile.html', name=current_user.name, email = current_user.email_id)
+    return render_template("profile.html", name=current_user.name, email = current_user.email_id)
 
 
 @main.route("/")
@@ -46,12 +46,14 @@ def home():
 @main.route("/auth/")
 def connect_spotify():
     authID = request.url
+    # "localhost:5000/auth/"
+    # "https://listenbotter.herokuapp.com/auth/"
     authID = authID.split("?code=")[-1]
     token_url = "https://accounts.spotify.com/api/token"
     payload = {
         "code": authID,
         "grant_type": "authorization_code",
-        "redirect_uri": "https://listenbotter.herokuapp.com/auth/",
+        "redirect_uri": "localhost:5000/auth/",
         "scope": scope
     }
     headers = {
