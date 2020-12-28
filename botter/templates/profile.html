@@ -7,6 +7,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 	<nav>
@@ -15,11 +16,7 @@
 			<p>Listen to your favorite songs with friends</p>
 		</div>
 		<div class="options">
-			{% if is_connected %}
-			<a class="links" href="">Spotify connected ✓</a>
-			{% else %}
-			<a class="links" href='https://accounts.spotify.com/authorize?client_id={{ client_id }}&scope={{ scope }}&response_type=code&redirect_uri=https://listenbotter.herokuapp.com/auth/'>Connect Spotify</a>
-			{% endif %}
+			<a class="links" href="{{ url_for('main.dashboard') }}">Home</a>
 			<a class="links" href="{{ url_for('auth.logout') }}">Logout</a>
 		</div>
 	</nav>
@@ -27,17 +24,20 @@
 		<div id="head"><h1>Profile</h1></div>
 		<div><p>Name:	{{ name }}</p></div>
 		<div><p>Email:	{{ email_id }}</p></div>
-		<button>Change password</button>
+		<button id="change">Change password</button>
 	</div>
-	{% if not is_connected %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#change").on('click', function(){
+				$('.popup').append('')
+			});
+		});
+	</script>
 	<div class="popup">
-		<div id="popcontent">
-			Connect to your spotify account to use the service.
-			<br>
-			This service requires access to your spotify account to play music.
-		</div>
-		<a class="links" id="connect_link" href='https://accounts.spotify.com/authorize?client_id={{ client_id }}&scope={{ scope }}&response_type=code&redirect_uri=https://listenbotter.herokuapp.com/auth/'>Connect Spotify</a>
+		<form action="" method="POST"><input type="password" name="old_pass"><input type="password" name="new_pass"><input type="password" name="r_new_pass"><input type="submit" name="submit" value="Change Password"></form>
+		{% if error %}
+		<p>{{ error }}</p>
+		{% endif %}
 	</div>
-	{% endif %}
 </body>
 </html>
