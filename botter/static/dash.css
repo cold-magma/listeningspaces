@@ -157,6 +157,7 @@ form{
 	text-align: left;
 }
 .change_pass{
+	opacity: 1;
 	height: 50vh;
 	padding: 20px;
 }
