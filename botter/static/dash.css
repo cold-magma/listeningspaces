@@ -151,3 +151,11 @@ form{
 	font-family: 'Roboto Condensed', monospace;
 	font-size: 14px;
 }
+.user_data{
+	width: 50%;
+	height: 5vh;
+	text-align: left;
+}
+.change_pass{
+	height: 30vh;
+}

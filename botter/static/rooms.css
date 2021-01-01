@@ -358,14 +358,23 @@ h3{
 #play{
 	height: 100%;
 	width: 5%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 #pause{
 	height: 100%;
 	width: 5%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 #sync{
 	height: 100%;
 	width: 5%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 #leave_room{
 	width: 10%;

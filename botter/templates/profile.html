@@ -22,14 +22,14 @@
 	</nav>
 	<div id="content">
 		<div id="head"><h1>Profile</h1></div>
-		<div><p>Name:	{{ name }}</p></div>
-		<div><p>Email:	{{ email }}</p></div>
+		<div class="user_data"><p>Name:	{{ name }}</p></div>
+		<div class="user_data"><p>Email:	{{ email }}</p></div>
 		<button id="change">Change password</button>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#change").on('click', function(){
-				$('#pop').append('<div class="popup"><form action="" method="POST"><input type="password" name="old_pass"><input type="password" name="new_pass"><input type="password" name="r_new_pass"><input type="submit" name="submit" value="Change Password"></form>{% if error %}<p>{{ error }}</p>{% endif %}</div>')
+				$('#pop').append('<div class="popup"><form class="change_pass" action="" method="POST"><input class="data" type="password" name="old_pass"><input class="data" type="password" name="new_pass"><input class="data" type="password" name="r_new_pass"><input class="submit" type="submit" name="submit" value="Change Password"></form>{% if error %}<p>{{ error }}</p>{% endif %}</div>')
 			});
 		});
 	</script>
