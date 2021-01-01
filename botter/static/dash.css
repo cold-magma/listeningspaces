@@ -157,7 +157,13 @@ form{
 	text-align: left;
 }
 .change_pass{
+	z-index: 3;
 	opacity: 1;
 	height: 50vh;
 	padding: 20px;
+}
+#pop{
+	background: black;
+	opacity: 0.95;
+	z-index: 1;
 }
