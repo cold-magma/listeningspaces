@@ -164,6 +164,6 @@ form{
 }
 #pop{
 	background: black;
-	opacity: 0.95;
+	opacity: 1;
 	z-index: 1;
 }
