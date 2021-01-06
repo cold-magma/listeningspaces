@@ -152,7 +152,7 @@ p{
 	width: 7px;
 }
 #messages::-webkit-scrollbar-track{
-	background: #303030;
+	background: #1f1f1f;
 }
 #messages::-webkit-scrollbar-thumb{
 	background: #1db954;
