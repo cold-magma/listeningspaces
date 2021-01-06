@@ -152,10 +152,10 @@ p{
 	width: 7px;
 }
 #messages::-webkit-scrollbar-track{
-	background: #2752B9;
+	background: #303030;
 }
 #messages::-webkit-scrollbar-thumb{
-	background: #FFC633;
+	background: #1db954;
 	border-radius: 5px;
 }
 #message{
