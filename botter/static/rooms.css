@@ -9,6 +9,16 @@ body{
 	justify-content: space-around;
 	background: #303030;
 }
+body::-webkit-scrollbar{
+	width: 7px;
+}
+body::-webkit-scrollbar-track{
+	background: #2752B9;
+}
+body::-webkit-scrollbar-thumb{
+	background: #FFC633;
+	border-radius: 5px;
+}
 label{
 	font-size: 14px;
 }
