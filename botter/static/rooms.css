@@ -126,6 +126,9 @@ p{
 	border-radius: 50px;
 	text-decoration: none;
 }
+#sender_msg:placeholder{
+	color: #ededed;
+}
 #send_btn{
 	width: 20%;
 	height: 100%;
@@ -276,6 +279,9 @@ form{
 	border-radius: 50px;
 	text-decoration: none;
 	margin-bottom: 20px;
+}
+.key_in:placeholder{
+	color: #ededed;
 }
 .enter{
 	width: 30%;
