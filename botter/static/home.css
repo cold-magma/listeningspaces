@@ -23,12 +23,12 @@ nav{
 	justify-content: space-around;
 }
 h1{
-	font-family: 'Padauk', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 32px;
 	font-weight: bolder;
 }
 p{
-	font-family: 'Padauk', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 16px;
 }
 .auth{
@@ -39,7 +39,7 @@ p{
 }
 #info{
 	width: 80%;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 20px;
 	color: white;
 	text-align: right;
@@ -47,7 +47,7 @@ p{
 #content{
 	width: 80%;
 	height: 60vh;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 20px;
 	color: white;
 	display: flex;
@@ -55,7 +55,7 @@ p{
 	justify-content: space-around;
 }
 .links{
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 16px;
 	color: white;
 	text-decoration:none;

@@ -11,7 +11,7 @@
 <body>
 	<nav>
 		<div id="logo">
-			<h1 id="logoh1">Botter</h1>
+			<h1 id="logoh1">Listening Spaces</h1>
 			<p>Listen to your favorite songs with friends</p>
 		</div>
 		<div class="auth">
@@ -19,6 +19,20 @@
 			<a class="links" href="{{ url_for('auth.signup') }}">Sign up</a>
 		</div>
 	</nav>
-	<div id="content">Login or Sign Up to continue</div>
+	<div id="content">
+		Login or Sign Up to continue
+		<img src="{{ url_for('static',filename='spotify.png') }}">
+	</div>
+	<div id="content">
+		Listen to music with your friends
+		<img src="{{ url_for('static',filename='music.png') }}">
+	</div>
+	<div id="content">
+		Chat with them while listening to music together.
+		<img src="{{ url_for('static',filename='friends.png') }}">
+	</div><div id="content">
+		Make a room and listen away woth you friends
+		<img src="{{ url_for('static',filename='friends.png') }}">
+	</div>
 </body>
 </html>

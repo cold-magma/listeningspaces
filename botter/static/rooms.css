@@ -19,7 +19,7 @@ label{
 a{
 	text-decoration: none;
 	color: white;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 }
 nav{
 	width: 80%;
@@ -29,19 +29,19 @@ nav{
 	justify-content: space-around;
 }
 h1{
-	font-family: 'Padauk', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 32px;
 	font-weight: bolder;
 }
 h2{
-	font-family: 'Padauk', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 20px;
 	color: white;
 	font-weight: bolder;
 }
 p{
 	color: white;
-	font-family: 'Padauk', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 20px;
 }
 .auth{
@@ -52,7 +52,7 @@ p{
 }
 #info{
 	width: 80%;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 20px;
 	color: white;
 	text-align: right;
@@ -60,7 +60,7 @@ p{
 #room_key_div{
 	width: 20%;
 	height: 10%;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 16px;
 	display: flex;
 	align-items: center;
@@ -71,7 +71,7 @@ p{
 #content{
 	width: 80%;
 	height: 80vh;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 20px;
 	color: white;
 	display: flex;
@@ -84,7 +84,7 @@ p{
 	width: 85%;
 	background: #1f1f1f;
 	color: #707070;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 11px;
 	text-align: center;
 }
@@ -116,7 +116,7 @@ p{
 	border-right: none;
 	border-left: none;
 	color: whitesmoke;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 16px;
 	padding: 5px;
 	outline: none;
@@ -130,7 +130,7 @@ p{
 	background: #1db954;
 	color: white;
 	border:none;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 14px;
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -158,7 +158,7 @@ p{
 	padding-top: 5px;
 }
 .links{
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 16px;
 	color: white;
 	text-decoration:none;
@@ -197,7 +197,7 @@ p{
 	height: auto;
 	float: right;
 	border-radius: 20px;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 14px;
 	padding: 6px;
 	margin-top: 4px;
@@ -209,7 +209,7 @@ p{
 	border-radius: 20px;
 	height: auto;
 	float: left;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 14px;
 	padding: 5px;
 	margin-top: 4px;
@@ -219,7 +219,7 @@ p{
 	height: auto;
 }
 .my_name{
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 11px;
 	float: right;
 	width: 100%;
@@ -227,7 +227,7 @@ p{
 	margin-bottom: 1px;
 }
 .a_name{
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 11px;
 	float: left;
 	width: 100%;
@@ -256,7 +256,7 @@ form{
 	border-right: none;
 	border-left: none;
 	color: whitesmoke;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 16px;
 	padding: 10px;
 	outline: none;
@@ -271,7 +271,7 @@ form{
 	background: #1db954;
 	color: white;
 	border:none;
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 14px;
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -331,7 +331,7 @@ h3{
 	height: 100%;
 }
 #enter_room{
-	font-family: 'Roboto Condensed', monospace;
+	font-family: 'VT323', monospace;
 	font-size: 16px;
 	color: white;
 	text-decoration:none;
